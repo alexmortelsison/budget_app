@@ -20,6 +20,38 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   void signUpUser() {
+    if (passwordController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Center(
+            child: Text(
+              "Password is epmty",
+              style: TextStyle(
+                color: Colors.red,
+                fontWeight: FontWeight.w900,
+                fontSize: 16,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+    if (confirmPasswordController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Center(
+            child: Text(
+              "Please confirm password",
+              style: TextStyle(
+                color: Colors.red,
+                fontWeight: FontWeight.w900,
+                fontSize: 16,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
     if (emailController.text.isEmpty) {
       ScaffoldMessenger.of(
         context,
