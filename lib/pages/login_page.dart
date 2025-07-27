@@ -1,3 +1,4 @@
+import 'package:budget_app/components/my_button.dart';
 import 'package:budget_app/components/my_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -23,9 +24,26 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Lottie.asset("lib/assets/logo.json"),
-              Text(
-                "Budget App",
-                style: TextStyle(color: Colors.grey.shade700, fontSize: 24),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Budget",
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.w900,
+                      fontSize: 24,
+                    ),
+                  ),
+                  Text(
+                    "App",
+                    style: TextStyle(
+                      color: Colors.grey.shade700,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: 24),
               MyTextfield(
@@ -39,16 +57,29 @@ class _LoginPageState extends State<LoginPage> {
                 obscureText: true,
                 controller: passwordController,
               ),
+              SizedBox(height: 8),
+              MyButton(
+                name: 'Login',
+                onTap: () {},
+              ),
               SizedBox(height: 4),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "Not a member yet?",
+                  Row(
+                    children: [
+                      Text(
+                        "Not a member yet?",
+                      ),
+                      SizedBox(width: 4),
+                      Text(
+                        "Sign up now",
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                    ],
                   ),
-                  SizedBox(width: 4),
                   Text(
-                    "Sign up now",
+                    "Forgot Password?",
                     style: TextStyle(color: Colors.blue),
                   ),
                 ],
