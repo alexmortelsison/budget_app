@@ -6,7 +6,6 @@ import 'package:lottie/lottie.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
-
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -69,6 +68,39 @@ class _LoginPageState extends State<LoginPage> {
               MyButton(
                 name: 'Login',
                 onTap: () {},
+              ),
+              SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Divider(
+                      thickness: 1,
+                      height: 40,
+                      color: Colors.grey.shade400,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: Text("or"),
+                  ),
+                  Expanded(
+                    child: Divider(
+                      thickness: 1,
+                      height: 40,
+                      color: Colors.grey.shade400,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
+              Container(
+                height: 100,
+                width: 100,
+                decoration: BoxDecoration(
+                  border: Border.all(),
+                ),
+                child: Image.asset("lib/assets/google.png"),
               ),
               SizedBox(height: 4),
               Row(
