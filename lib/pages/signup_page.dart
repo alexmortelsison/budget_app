@@ -1,26 +1,91 @@
 import 'package:budget_app/components/my_button.dart';
 import 'package:budget_app/components/my_textfield.dart';
-import 'package:budget_app/pages/signup_page.dart';
+import 'package:budget_app/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  void moveToSignUp() {
+class _SignUpPageState extends State<SignUpPage> {
+  void moveToSignIn() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => SignUpPage()),
+      MaterialPageRoute(builder: (context) => LoginPage()),
+    );
+  }
+
+  void signUpUser() {
+    if (emailController.text.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(
+        SnackBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          content: Center(
+            child: Text(
+              "Please enter your email.",
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+    if (passwordController.text != confirmPasswordController.text) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(
+        SnackBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          content: Center(
+            child: Text(
+              "Passwords do not match",
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+      );
+      return;
+    }
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(
+      SnackBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        content: Center(
+          child: Text(
+            "Signed up successfully!",
+            style: TextStyle(
+              color: Colors.green,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
     );
   }
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,9 +131,15 @@ class _LoginPageState extends State<LoginPage> {
                 controller: passwordController,
               ),
               SizedBox(height: 8),
+              MyTextfield(
+                hintText: "Confirm Password",
+                obscureText: true,
+                controller: confirmPasswordController,
+              ),
+              SizedBox(height: 8),
               MyButton(
-                name: 'Login',
-                onTap: () {},
+                name: 'Sign Up',
+                onTap: () => signUpUser(),
               ),
               SizedBox(height: 4),
               Row(
@@ -77,24 +148,17 @@ class _LoginPageState extends State<LoginPage> {
                   Row(
                     children: [
                       Text(
-                        "Not a member yet?",
+                        "Already a member?",
                       ),
                       SizedBox(width: 4),
                       GestureDetector(
-                        onTap: moveToSignUp,
+                        onTap: moveToSignIn,
                         child: Text(
-                          "Sign up now",
+                          "Log in now",
                           style: TextStyle(color: Colors.blue),
                         ),
                       ),
                     ],
-                  ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Text(
-                      "Forgot Password?",
-                      style: TextStyle(color: Colors.blue),
-                    ),
                   ),
                 ],
               ),
