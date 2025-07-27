@@ -17,4 +17,23 @@ class AuthService {
       throw Exception("Error occure while signing up:$e");
     }
   }
+
+  Future<UserCredential> loginWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
+    try {
+      UserCredential userCredential = await _firebaseAuth
+          .signInWithEmailAndPassword(email: email, password: password);
+      return userCredential;
+    } on FirebaseAuthException {
+      rethrow;
+    } catch (e) {
+      throw Exception("Error logging in:$e");
+    }
+  }
+
+  Future<void> signout() async {
+    await _firebaseAuth.signOut();
+  }
 }
