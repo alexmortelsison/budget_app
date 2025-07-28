@@ -1,6 +1,7 @@
 import 'package:budget_app/components/my_button.dart';
 import 'package:budget_app/components/my_textfield.dart';
 import 'package:budget_app/pages/login_page.dart';
+import 'package:budget_app/service/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -19,7 +20,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  void signUpUser() {
+  void signUpUser() async {
     if (passwordController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -93,6 +94,15 @@ class _SignUpPageState extends State<SignUpPage> {
       );
       return;
     }
+    try {
+      final AuthService authService = AuthService();
+      await authService.signUpWithEmailAndPassword(
+        emailController.text,
+        passwordController.text,
+      );
+      Navigator.pop(context);
+    } catch (e) {}
+
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(
@@ -110,6 +120,10 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
         ),
       ),
+    );
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => LoginPage()),
     );
   }
 

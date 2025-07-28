@@ -1,4 +1,6 @@
+import 'package:budget_app/components/bottom_navbar.dart';
 import 'package:budget_app/firebase_options.dart';
+import 'package:budget_app/pages/home_page.dart';
 import 'package:budget_app/pages/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: HomePage(),
     );
   }
 }
