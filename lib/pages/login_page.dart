@@ -31,28 +31,57 @@ class _LoginPageState extends State<LoginPage> {
         backgroundColor: Colors.transparent,
       ),
       backgroundColor: Colors.grey.shade300,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Logo(),
-          SizedBox(height: 16),
-          MyTextfield(
-            hintText: 'Email',
-            obscureText: false,
-            controller: null,
-          ),
-          MyTextfield(
-            hintText: 'Password',
-            obscureText: true,
-            controller: null,
-          ),
-          SizedBox(height: 24),
-          MyButton(
-            name: "Login",
-            onTap: () {},
-            horizontal: 48,
-          ),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 48),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Logo(),
+            SizedBox(height: 16),
+            MyTextfield(
+              hintText: 'Email',
+              obscureText: false,
+              controller: null,
+            ),
+            MyTextfield(
+              hintText: 'Password',
+              obscureText: true,
+              controller: null,
+            ),
+            SizedBox(height: 24),
+            MyButton(
+              name: "Login",
+              onTap: () {},
+              horizontal: 0,
+            ),
+            SizedBox(height: 2),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text("Noy yet a member?"),
+                    SizedBox(width: 2),
+                    Text(
+                      "Register now",
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+                Text(
+                  "Forgot Password?",
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

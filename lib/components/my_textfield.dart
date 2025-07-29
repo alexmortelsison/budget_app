@@ -15,7 +15,7 @@ class MyTextfield extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 8),
+        padding: const EdgeInsets.symmetric(vertical: 8),
         child: Column(
           children: [
             TextField(
