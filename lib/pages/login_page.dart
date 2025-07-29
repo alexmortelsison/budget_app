@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
           MyButton(
             name: "Login",
             onTap: () {},
-            horizontal: 48,
+            horizontal: 47,
           ),
         ],
       ),
