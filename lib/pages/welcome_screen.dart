@@ -1,5 +1,7 @@
 import 'package:budget_app/components/logo.dart';
 import 'package:budget_app/components/my_button.dart';
+import 'package:budget_app/pages/login_page.dart';
+import 'package:budget_app/pages/register_page.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -10,6 +12,20 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+  void moveToLoginPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LoginPage()),
+    );
+  }
+
+  void moveToRegisterPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => RegisterPage()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,12 +38,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             SizedBox(height: 32),
             MyButton(
               name: 'Login',
-              onTap: () {},
+              onTap: () => moveToLoginPage(),
+              horizontal: 84,
             ),
             SizedBox(height: 12),
             MyButton(
               name: 'Register',
-              onTap: () {},
+              onTap: () => moveToRegisterPage(),
+              horizontal: 84,
             ),
           ],
         ),

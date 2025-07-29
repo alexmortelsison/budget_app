@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class MyButton extends StatelessWidget {
   final String name;
   final Function()? onTap;
+  final double horizontal;
   const MyButton({
     super.key,
     required this.name,
     required this.onTap,
+    required this.horizontal,
   });
 
   @override
@@ -14,7 +16,7 @@ class MyButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 84),
+        padding: EdgeInsets.symmetric(horizontal: horizontal),
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
