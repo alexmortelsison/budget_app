@@ -1,9 +1,10 @@
 import 'package:budget_app/components/logo.dart';
 import 'package:budget_app/components/my_button.dart';
 import 'package:budget_app/components/my_textfield.dart';
+import 'package:budget_app/pages/home_page.dart';
 import 'package:budget_app/pages/welcome_screen.dart';
+import 'package:budget_app/services/auth_service.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -22,6 +23,34 @@ class _LoginPageState extends State<LoginPage> {
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final AuthService authService = AuthService();
+
+  void handleLogin() async {
+    if (emailController.text.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Please enter email")));
+      return;
+    }
+    if (passwordController.text.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Please enter password")));
+      return;
+    }
+    try {
+      await authService.signInUser(
+        emailController.text,
+        passwordController.text,
+      );
+    } catch (e) {
+      throw Exception("Can't log in.$e");
+    }
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HomePage()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 24),
             MyButton(
               name: "Login",
-              onTap: () {},
+              onTap: () => handleLogin(),
               horizontal: 0,
             ),
             SizedBox(height: 2),
