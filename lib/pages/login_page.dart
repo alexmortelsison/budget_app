@@ -20,6 +20,9 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,12 +44,12 @@ class _LoginPageState extends State<LoginPage> {
             MyTextfield(
               hintText: 'Email',
               obscureText: false,
-              controller: null,
+              controller: emailController,
             ),
             MyTextfield(
               hintText: 'Password',
               obscureText: true,
-              controller: null,
+              controller: passwordController,
             ),
             SizedBox(height: 24),
             MyButton(

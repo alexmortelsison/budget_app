@@ -25,13 +25,17 @@ class Logo extends StatelessWidget {
             ),
             Text(
               "App",
-              style: TextStyle(fontSize: 32, letterSpacing: -0.9),
+              style: TextStyle(
+                fontSize: 32,
+                letterSpacing: -0.9,
+                fontWeight: FontWeight.w800,
+              ),
             ),
           ],
         ),
         Text(
-          "Your go to app to save.",
-          style: TextStyle(letterSpacing: -0.9),
+          "Your go to app for savings.",
+          style: TextStyle(letterSpacing: -0.99),
         ),
       ],
     );
