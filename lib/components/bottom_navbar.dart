@@ -11,6 +11,7 @@ class _BottomNavbarState extends State<BottomNavbar> {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
+      notchMargin: 18,
       color: Colors.green,
       shape: CircularNotchedRectangle(),
     );
