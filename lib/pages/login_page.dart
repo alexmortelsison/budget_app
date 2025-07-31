@@ -21,6 +21,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  bool isLoading = false;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final AuthService authService = AuthService();
@@ -38,6 +39,9 @@ class _LoginPageState extends State<LoginPage> {
       ).showSnackBar(SnackBar(content: Text("Please enter password")));
       return;
     }
+    setState(() {
+      isLoading = true;
+    });
     try {
       await authService.signInUser(
         emailController.text,
